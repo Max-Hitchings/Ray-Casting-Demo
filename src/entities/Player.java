@@ -4,11 +4,15 @@ package entities;
 import java.awt.*;
 
 public class Player extends Entity{
+    private RayCasts casts;
     private boolean up, down, left, right;
-    private float playerSpeed = 2.0f;
+    private float playerSpeed = 0.4f;
+    public float heading = 27.0f;
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
+        casts = new RayCasts(this, 0, 0f);
+
     }
     public void update() {
         updatePos();
@@ -30,6 +34,15 @@ public class Player extends Entity{
 
 
     public void render(Graphics g) {
+        for (int i = 0; i <45; i ++) {
+            casts.updateCasts(g, x + (width/2f), y + (height/2f), i);
+//            i += 2;
+        }
+//        for (int j = 360; j > 315; j--) {
+//            casts.newCast(g, x + (width/2f), y + (height/2f), j);
+//            j += 2;
+//        }
+
 //        g.drawImage(sprite, (int) x, (int) y, width, height, null);
         g.setColor(new Color(255, 0, 0));
         g.fillOval((int) x,(int) y, width, height);

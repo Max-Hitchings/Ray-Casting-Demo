@@ -5,14 +5,14 @@ import java.awt.*;
 import static main.Game.*;
 
 public class GameGrid {
-    private String[] layout = {"################",
-                    "#000000##",
-                    "#00000000000000#",
-                    "#00000000000000#",
-                    "#00000000000000#",
-                    "#00000000000000#",
-                    "#00000000000000#",
-                    "#00000000000000#",
+    private final String[] layout = {"################",
+                    "################",
+            "################",
+            "################",
+            "################",
+            "################",
+            "################",
+            "################",
                     "################"};
     private boolean[][] grid;
     public GameGrid() {
@@ -21,23 +21,26 @@ public class GameGrid {
 
     public void render(Graphics g) {
         g.setColor(new Color(0));
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[y].length; x++) {
+        for (int y = 0; y < 9; y++) {
+//            for (int x = 0; x < 16; x++) {
+//                if (grid[x][y]) {
+//                    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE-5, TILE_SIZE-5);
+//                }
+//            }
+            for (int x = 0; x < 16; x++) {
                 if (grid[y][x]) {
-                    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE, TILE_SIZE);
+                    g.fillRect(x * TILE_SIZE, y * TILE_SIZE, TILE_SIZE - 1, TILE_SIZE - 1);
                 }
             }
         }
     }
 
     private void constructGrid() {
-        grid = new boolean[TILES_IN_HEIGHT][TILES_IN_WIDTH];
+        grid = new boolean[9][16];
 
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid.length; x++) {
-                if (layout[y].charAt(x) == '#') {
-                    grid[y][x] = true;
-                } else grid[y][x] = false;
+        for (int y = 0; y < 9; y++) {
+            for (int x = 0; x < grid[y].length; x++) {
+                grid[y][x] = layout[y].charAt(x) == '#';
             }
         }
     }
