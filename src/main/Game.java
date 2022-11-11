@@ -34,7 +34,7 @@ public class Game implements Runnable{
     }
 
     private void initClasses() {
-        player = new Player(27, TILE_SIZE+TILE_SIZE-4, 10, 10);
+        player = new Player(27, 27, 10, 10);
         gameGrid = new GameGrid();
     }
 

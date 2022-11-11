@@ -20,30 +20,46 @@ public class RayCasts {
         double lxDelta = startX % TILE_SIZE;
 
 //      TODO These 4 are wrong and need fixing
-        double trTheta = Math.abs(Math.toDegrees(Math.atan(rxDelta/tyDelta))) * 2;
-        double brTheta = Math.abs(Math.toDegrees(Math.atan(rxDelta/byDelta))) * 2;
-        double blTheta = Math.abs(Math.toDegrees(Math.atan(lxDelta/byDelta))) * 2;
-        double tlTheta = Math.abs(Math.toDegrees(Math.atan(tyDelta/lxDelta))) * 2;
+        double trTheta = Math.abs(Math.toDegrees(Math.atan(rxDelta/tyDelta)));
+        double tlTheta = Math.abs(Math.toDegrees(Math.atan(lxDelta/tyDelta)));
 
-        double total = trTheta + brTheta + blTheta + tlTheta;
-        drawDebug(g, String.valueOf(total), 80);
+        double brTheta = Math.abs(Math.toDegrees(Math.atan(rxDelta/byDelta)));
+        double blTheta = Math.abs(Math.toDegrees(Math.atan(lxDelta/byDelta)));
+
+        double down =  brTheta + blTheta;
+        double up = trTheta + tlTheta;
+        drawDebug(g, String.valueOf(up), 80);
+        drawDebug(g, String.valueOf(down), 95);
+
+        double rtTheta = Math.abs(Math.toDegrees(Math.atan(tyDelta/rxDelta)));
+        double rbTheta = Math.abs(Math.toDegrees(Math.atan(byDelta/rxDelta)));
+        double right = rbTheta + rtTheta;
+
+        double ltTheta = Math.abs(Math.toDegrees(Math.atan(tyDelta/lxDelta)));
+        double lbTheta = Math.abs(Math.toDegrees(Math.atan(byDelta/lxDelta)));
+        double left = ltTheta + lbTheta;
+        drawDebug(g, String.valueOf(right), 110);
+        drawDebug(g, String.valueOf(left), 125);
+
+        double total = up + down + right + left;
+        drawDebug(g, String.valueOf(total), 160);
 
 
         //      Top right:
-        drawDebug(g, String.valueOf(trTheta), 0);
+//        drawDebug(g, String.valueOf(trTheta), 0);
         drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX + rxDelta), (int) (startY + tyDelta)));
 
 //        Bottom Right
-        drawDebug(g, String.valueOf(brTheta), 15);
+//        drawDebug(g, String.valueOf(brTheta), 15);
         drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX + rxDelta), (int) (startY + byDelta)));
 
 
 //        Bottom left
-        drawDebug(g, String.valueOf(blTheta), 30);
+//        drawDebug(g, String.valueOf(blTheta), 30);
         drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX - lxDelta), (int) (startY + byDelta)));
 
 //        Top Left
-        drawDebug(g, String.valueOf(tlTheta), 45);
+//        drawDebug(g, String.valueOf(tlTheta), 45);
         drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX - lxDelta), (int) (startY + tyDelta)));
 
         int theta = 1;
