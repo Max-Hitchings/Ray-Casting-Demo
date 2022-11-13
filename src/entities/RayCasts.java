@@ -3,14 +3,17 @@ package entities;
 import java.awt.*;
 
 import static main.Game.TILE_SIZE;
+import static utils.helpers.drawDebug;
+import static utils.helpers.getLineAngle;
 
 public class RayCasts {
 //    float heading = 25f;
-    public RayCasts(Player player, int degrees, float frequency) {
+    public RayCasts() {
 //        newCast(g, player.x, player.y, player.heading);
     }
 
-    public void updateCasts(Graphics g, float startX, float startY, float heading) {
+    public void updateCasts(Graphics g, float startX, float startY, double heading) {
+        drawDebug(g, String.valueOf(heading), 300);
         Point yCast, xCast;
         double firstYStep;
 
@@ -18,6 +21,10 @@ public class RayCasts {
         double byDelta = TILE_SIZE - (startY % TILE_SIZE);
         double rxDelta = TILE_SIZE - (startX % TILE_SIZE);
         double lxDelta = startX % TILE_SIZE;
+        drawDebug(g, String.valueOf(tyDelta), 350);
+        drawDebug(g, String.valueOf(byDelta), 375);
+        drawDebug(g, String.valueOf(rxDelta), 400);
+        drawDebug(g, String.valueOf(lxDelta), 425);
 
 //      TODO These 4 are wrong and need fixing
         double trTheta = Math.abs(Math.toDegrees(Math.atan(rxDelta/tyDelta)));
@@ -43,6 +50,31 @@ public class RayCasts {
 
         double total = up + down + right + left;
         drawDebug(g, String.valueOf(total), 160);
+        drawDebug(g, String.valueOf(down+up), 180);
+        drawDebug(g, String.valueOf(right + left), 200);
+
+//        heading = 30;
+        double tr = getLineAngle(startX, startY, startX + rxDelta, startY + tyDelta);
+        double br = getLineAngle(startX, startY, startX + rxDelta, startY + byDelta);
+
+        double bl = getLineAngle(startX, startY, startX - lxDelta, startY + byDelta);
+        double tl = getLineAngle(startX, startY, startX - lxDelta, startY + tyDelta);
+        double realRayAngle = heading;
+        String realHeading;
+        if (realRayAngle > tl) {
+            realHeading = "up";
+        } else if (realRayAngle > bl) {
+            realHeading = "left";
+        } else if (realRayAngle > br) {
+            realHeading = "down";
+        } else if (realRayAngle > tr) {
+            realHeading = "right";
+        } else {
+            realHeading = "up";
+        }
+
+        drawDebug(g, String.valueOf(heading), 220);
+        drawDebug(g, realHeading, 240);
 
 
         //      Top right:
@@ -81,10 +113,6 @@ public class RayCasts {
 
 //            drawCast(g, new Point((int) startX, (int) startY), new Point((int) startX + (int) xStep, (int) startY - (int) second));
         }
-    }
-    private void drawDebug(Graphics g, String text, int offset) {
-        g.setColor(Color.ORANGE);
-        g.drawString(text, 5, 15 + offset);
     }
     private void drawCast(Graphics g, Point start, Point end) {
 //        heading += 0.5f;
