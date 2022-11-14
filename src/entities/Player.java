@@ -8,7 +8,7 @@ import static utils.helpers.getLineAngle;
 public class Player extends Entity{
     private RayCasts casts;
     private boolean up, down, left, right;
-    private float playerSpeed = 0.4f;
+    private float playerSpeed = 0.75f;
     public float heading = 27.0f;
     public double mouseAngle = 0;
 
@@ -38,10 +38,12 @@ public class Player extends Entity{
 
 
     public void render(Graphics g) {
-        for (int i = 0; i <45; i ++) {
-            casts.updateCasts(g, x + (width/2f), y + (height/2f), mouseAngle);
-//            i += 2;
-        }
+//        for (int i = 135; i <225; i += 2) {
+//            casts.updateCasts(g, x + (width/2f), y + (height/2f), i);
+////            i += 2;
+//        }
+        casts.updateCasts(g, x + (width/2f), y + (height/2f), mouseAngle);
+
 //        for (int j = 360; j > 315; j--) {
 //            casts.newCast(g, x + (width/2f), y + (height/2f), j);
 //            j += 2;

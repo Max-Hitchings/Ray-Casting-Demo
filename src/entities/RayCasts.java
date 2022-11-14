@@ -1,6 +1,7 @@
 package entities;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 
 import static main.Game.TILE_SIZE;
 import static utils.helpers.drawDebug;
@@ -12,46 +13,16 @@ public class RayCasts {
 //        newCast(g, player.x, player.y, player.heading);
     }
 
-    public void updateCasts(Graphics g, float startX, float startY, double heading) {
-        drawDebug(g, String.valueOf(heading), 300);
-        Point yCast, xCast;
-        double firstYStep;
-
+    public void updateCasts(Graphics g, double startX, double startY, double heading) {
+        Point2D startPos = new Point2D.Double(startX, startY);
+        //        ty - Top Y
         double tyDelta =  -(startY % TILE_SIZE);
+//        by - Bottom Y
         double byDelta = TILE_SIZE - (startY % TILE_SIZE);
+//        rx - Right X
         double rxDelta = TILE_SIZE - (startX % TILE_SIZE);
+//        lx - Left X
         double lxDelta = startX % TILE_SIZE;
-        drawDebug(g, String.valueOf(tyDelta), 350);
-        drawDebug(g, String.valueOf(byDelta), 375);
-        drawDebug(g, String.valueOf(rxDelta), 400);
-        drawDebug(g, String.valueOf(lxDelta), 425);
-
-//      TODO These 4 are wrong and need fixing
-        double trTheta = Math.abs(Math.toDegrees(Math.atan(rxDelta/tyDelta)));
-        double tlTheta = Math.abs(Math.toDegrees(Math.atan(lxDelta/tyDelta)));
-
-        double brTheta = Math.abs(Math.toDegrees(Math.atan(rxDelta/byDelta)));
-        double blTheta = Math.abs(Math.toDegrees(Math.atan(lxDelta/byDelta)));
-
-        double down =  brTheta + blTheta;
-        double up = trTheta + tlTheta;
-        drawDebug(g, String.valueOf(up), 80);
-        drawDebug(g, String.valueOf(down), 95);
-
-        double rtTheta = Math.abs(Math.toDegrees(Math.atan(tyDelta/rxDelta)));
-        double rbTheta = Math.abs(Math.toDegrees(Math.atan(byDelta/rxDelta)));
-        double right = rbTheta + rtTheta;
-
-        double ltTheta = Math.abs(Math.toDegrees(Math.atan(tyDelta/lxDelta)));
-        double lbTheta = Math.abs(Math.toDegrees(Math.atan(byDelta/lxDelta)));
-        double left = ltTheta + lbTheta;
-        drawDebug(g, String.valueOf(right), 110);
-        drawDebug(g, String.valueOf(left), 125);
-
-        double total = up + down + right + left;
-        drawDebug(g, String.valueOf(total), 160);
-        drawDebug(g, String.valueOf(down+up), 180);
-        drawDebug(g, String.valueOf(right + left), 200);
 
 //        heading = 30;
         double tr = getLineAngle(startX, startY, startX + rxDelta, startY + tyDelta);
@@ -60,59 +31,63 @@ public class RayCasts {
         double bl = getLineAngle(startX, startY, startX - lxDelta, startY + byDelta);
         double tl = getLineAngle(startX, startY, startX - lxDelta, startY + tyDelta);
         double realRayAngle = heading;
+
+        double firstYStep=0, firstXStep = 0, theta = 0;
         String realHeading;
         if (realRayAngle > tl) {
             realHeading = "up";
+            firstYStep = tyDelta;
+            firstXStep = -(Math.tan(Math.toRadians(360 - realRayAngle)) * -(tyDelta));
+
         } else if (realRayAngle > bl) {
+//            theta = tl - realRayAngle;
+//            if (theta > 90) theta = theta - 90;
             realHeading = "left";
+//            firstXStep = lxDelta;
+//            firstYStep = Math.tan(Math.toRadians(tl - realRayAngle)) * lxDelta;
+//            firstYStep = -((TILE_SIZE/2f) - firstYStep);
+
+//            firstYStep =
         } else if (realRayAngle > br) {
             realHeading = "down";
+            firstYStep = byDelta;
+
+            double relativeAngle = 90-((bl - br) - (realRayAngle - br))  ;
+
+            Point2D x;
+            if (relativeAngle < 45  ){
+                x = new Point2D.Double(startX + rxDelta, startY + byDelta);
+            } else {
+                x = new Point2D.Double(startX - lxDelta, startY + byDelta);
+            }
+
+            double xDist = x.distance(startX, startY);
+
+            double angle2 = Math.toDegrees(Math.asin(byDelta/xDist));
+            double angle =  (angle2 + relativeAngle);
+
+            firstXStep = (Math.sin(Math.toRadians(relativeAngle)) * (xDist / Math.sin(Math.toRadians(angle)))) - ((bl-br)/2);
+            drawDebug(g, String.valueOf(firstXStep), 20);
+            drawDebug(g, String.valueOf(relativeAngle), 40);
+
+
         } else if (realRayAngle > tr) {
             realHeading = "right";
         } else {
             realHeading = "up";
-        }
+            firstYStep = tyDelta;
+            firstXStep = -(Math.tan(Math.toRadians(realRayAngle)) * (tyDelta));
 
-        drawDebug(g, String.valueOf(heading), 220);
+        }
+        drawCast(g, new Point((int) startX, (int) startY) , new Point((int) (startX + firstXStep), (int) (startY + firstYStep)));
+
+
+        drawDebug(g, String.valueOf(theta), 180);
+        drawDebug(g, String.valueOf(firstYStep), 200);
+        drawDebug(g, String.valueOf(firstXStep), 220);
+        drawDebug(g, String.valueOf(heading), 260);
         drawDebug(g, realHeading, 240);
 
-
-        //      Top right:
-//        drawDebug(g, String.valueOf(trTheta), 0);
-        drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX + rxDelta), (int) (startY + tyDelta)));
-
-//        Bottom Right
-//        drawDebug(g, String.valueOf(brTheta), 15);
-        drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX + rxDelta), (int) (startY + byDelta)));
-
-
-//        Bottom left
-//        drawDebug(g, String.valueOf(blTheta), 30);
-        drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX - lxDelta), (int) (startY + byDelta)));
-
-//        Top Left
-//        drawDebug(g, String.valueOf(tlTheta), 45);
-        drawCast(g, new Point((int)startX, (int)startY),new Point((int) (startX - lxDelta), (int) (startY + tyDelta)));
-
-        int theta = 1;
-//        Top and bottom cone work x cones need work
-        if (heading < theta) {
-            firstYStep = startY % TILE_SIZE;
-//        } else {
-//            firstYStep = TILE_SIZE - (startY % TILE_SIZE);
-//            return;
-//        }
-
-            double second = firstYStep / Math.cos(Math.toRadians(heading));
-            double yStep = TILE_SIZE / Math.cos(Math.toRadians(heading));
-            double xStep = Math.sqrt((yStep * yStep) - (TILE_SIZE * TILE_SIZE));
-
-            if (heading > 180) {
-                xStep = -xStep;
-            }
-
-//            drawCast(g, new Point((int) startX, (int) startY), new Point((int) startX + (int) xStep, (int) startY - (int) second));
-        }
     }
     private void drawCast(Graphics g, Point start, Point end) {
 //        heading += 0.5f;
