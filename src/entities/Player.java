@@ -38,11 +38,11 @@ public class Player extends Entity{
 
 
     public void render(Graphics g) {
-//        for (int i = 135; i <225; i += 2) {
-//            casts.updateCasts(g, x + (width/2f), y + (height/2f), i);
-////            i += 2;
-//        }
-        casts.updateCasts(g, x + (width/2f), y + (height/2f), mouseAngle);
+        for (int i = 0; i <360; i += 7) {
+            casts.addCast(g, x + (width/2f), y + (height/2f), i);
+//            i += 2;
+        }
+//        casts.addCast(g, x + (width/2f), y + (height/2f), mouseAngle);
 
 //        for (int j = 360; j > 315; j--) {
 //            casts.newCast(g, x + (width/2f), y + (height/2f), j);

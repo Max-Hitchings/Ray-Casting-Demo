@@ -1,11 +1,9 @@
 package entities;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 
 import static main.Game.TILE_SIZE;
-import static utils.helpers.drawDebug;
-import static utils.helpers.getLineAngle;
+import static utils.helpers.*;
 
 public class RayCasts {
 //    float heading = 25f;
@@ -13,9 +11,8 @@ public class RayCasts {
 //        newCast(g, player.x, player.y, player.heading);
     }
 
-    public void updateCasts(Graphics g, double startX, double startY, double heading) {
-        Point2D startPos = new Point2D.Double(startX, startY);
-        //        ty - Top Y
+    public void addCast(Graphics g, double startX, double startY, double heading) {
+//        ty - Top Y
         double tyDelta =  -(startY % TILE_SIZE);
 //        by - Bottom Y
         double byDelta = TILE_SIZE - (startY % TILE_SIZE);
@@ -24,97 +21,55 @@ public class RayCasts {
 //        lx - Left X
         double lxDelta = startX % TILE_SIZE;
 
-//        heading = 30;
+//        to - Top Right
         double tr = getLineAngle(startX, startY, startX + rxDelta, startY + tyDelta);
+//        br - Bottom Right
         double br = getLineAngle(startX, startY, startX + rxDelta, startY + byDelta);
-
+//        bl - Bottom Left
         double bl = getLineAngle(startX, startY, startX - lxDelta, startY + byDelta);
+//        tL - Top Left
         double tl = getLineAngle(startX, startY, startX - lxDelta, startY + tyDelta);
-        double realRayAngle = heading;
 
-        double firstYStep=0, firstXStep = 0, theta = 0, relativeAngle;
+        double firstYStep, firstXStep, relativeAngle;
         String realHeading;
-        if (realRayAngle > tl) {
+        if (heading > tl) {
             realHeading = "up";
             firstYStep = tyDelta;
-            firstXStep = -(Math.tan(Math.toRadians(360 - realRayAngle)) * -tyDelta);
+            firstXStep = -(Math.tan(Math.toRadians(360 - heading)) * -tyDelta);
 
-        } else if (realRayAngle > bl) {
-//            theta = tl - realRayAngle;
-//            if (theta > 90) theta = theta - 90;
+        } else if (heading > bl) {
             realHeading = "left";
             firstXStep = -lxDelta;
+            relativeAngle = heading - bl;
 
-            relativeAngle = realRayAngle - bl;
-            double halfWay = Math.toDegrees(Math.atan(byDelta / lxDelta));
-            if (relativeAngle < halfWay) {
-                relativeAngle = halfWay - relativeAngle;
-                firstYStep = (Math.tan(Math.toRadians(relativeAngle)) * lxDelta);
-
-            } else {
-                relativeAngle = relativeAngle - halfWay;
-                firstYStep = -(Math.tan(Math.toRadians(relativeAngle)) * lxDelta);
-            }
-
-        } else if (realRayAngle > br) {
+            firstYStep = getOppositeLength(relativeAngle, lxDelta, byDelta);
+        } else if (heading > br) {
             realHeading = "down";
             firstYStep = byDelta;
+            relativeAngle = heading - br;
 
-            relativeAngle = realRayAngle - br;
-            double halfWay = Math.toDegrees(Math.atan(rxDelta / byDelta));
-            if (relativeAngle < halfWay) {
-                relativeAngle = halfWay - relativeAngle;
-                firstXStep = (Math.tan(Math.toRadians(relativeAngle)) * byDelta);
-
-            } else {
-                relativeAngle = relativeAngle - halfWay;
-                firstXStep = -(Math.tan(Math.toRadians(relativeAngle)) * byDelta);
-            }
+            firstXStep = getOppositeLength(relativeAngle, byDelta, rxDelta);
         }
-        else if (realRayAngle > tr) {
+        else if (heading > tr) {
             realHeading = "right";
             firstXStep = rxDelta;
+            relativeAngle = heading - tr;
 
-            relativeAngle = realRayAngle-tr;
-            double test = realRayAngle - tr;
-            double halfWay = Math.toDegrees(Math.atan(tyDelta / rxDelta));
-            if (test < halfWay) {
-                test = halfWay - test;
-                firstYStep = (Math.tan(Math.toRadians(test)) * rxDelta);
-//                firstYStep = 1;
-
-            } else {
-                test = test - halfWay;
-                firstYStep = (Math.tan(Math.toRadians(test)) * rxDelta);
-//                firstYStep = 45;
-            }
-            drawDebug(g, String.valueOf(tr), 10);
-            drawDebug(g, String.valueOf(halfWay), 25);
-            drawDebug(g, String.valueOf(test), 50);
-
+            firstYStep = -getOppositeLength(relativeAngle, rxDelta, -tyDelta);
         } else {
             realHeading = "up";
             firstYStep = tyDelta;
-            firstXStep = -(Math.tan(Math.toRadians(realRayAngle)) * (tyDelta));
+            firstXStep = -(Math.tan(Math.toRadians(heading)) * (tyDelta));
 
         }
         drawCast(g, new Point((int) startX, (int) startY) , new Point((int) (startX + firstXStep), (int) (startY + firstYStep)));
 
-
-        drawDebug(g, String.valueOf(theta), 180);
-        drawDebug(g, String.valueOf(firstYStep), 200);
-        drawDebug(g, String.valueOf(firstXStep), 220);
         drawDebug(g, String.valueOf(heading), 260);
         drawDebug(g, realHeading, 240);
 
     }
     private void drawCast(Graphics g, Point start, Point end) {
-//        heading += 0.5f;
-//        if (heading > 360) { heading = 0f;}
         g.setColor(Color.GREEN);
         g.drawLine(start.x, start.y, end.x, end.y);
-        g.setColor(Color.ORANGE);
-//        g.drawString(String.valueOf(heading), 5, 20);
-//        g.drawString();
     }
 }
