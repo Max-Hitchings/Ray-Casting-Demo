@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="More work on the ray casting">
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Working downward first casts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/RayCasts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/RayCasts.java" afterDir="false" />
     </list>
@@ -81,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668463726687</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Working downward first casts">
+      <created>1668521233852</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1668521233852</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -101,7 +108,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Started sending casts first move" />
     <MESSAGE value="More work on the ray casting" />
-    <option name="LAST_COMMIT_MESSAGE" value="More work on the ray casting" />
+    <MESSAGE value="Working downward first casts" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working downward first casts" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -110,16 +118,6 @@
           <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
           <line>26</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/entities/RayCasts.java</url>
-          <line>75</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/entities/RayCasts.java</url>
-          <line>68</line>
-          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

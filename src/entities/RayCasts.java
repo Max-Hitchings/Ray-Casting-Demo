@@ -32,7 +32,7 @@ public class RayCasts {
         double tl = getLineAngle(startX, startY, startX - lxDelta, startY + tyDelta);
         double realRayAngle = heading;
 
-        double firstYStep=0, firstXStep = 0, theta = 0;
+        double firstYStep=0, firstXStep = 0, theta = 0, relativeAngle;
         String realHeading;
         if (realRayAngle > tl) {
             realHeading = "up";
@@ -45,16 +45,22 @@ public class RayCasts {
             realHeading = "left";
             firstXStep = -lxDelta;
 
-//            firstXStep = lxDelta;
-//            firstYStep = Math.tan(Math.toRadians(tl - realRayAngle)) * lxDelta;
-//            firstYStep = -((TILE_SIZE/2f) - firstYStep);
+            relativeAngle = realRayAngle - bl;
+            double halfWay = Math.toDegrees(Math.atan(byDelta / lxDelta));
+            if (relativeAngle < halfWay) {
+                relativeAngle = halfWay - relativeAngle;
+                firstYStep = (Math.tan(Math.toRadians(relativeAngle)) * lxDelta);
 
-//            firstYStep =
+            } else {
+                relativeAngle = relativeAngle - halfWay;
+                firstYStep = -(Math.tan(Math.toRadians(relativeAngle)) * lxDelta);
+            }
+
         } else if (realRayAngle > br) {
             realHeading = "down";
             firstYStep = byDelta;
 
-            double relativeAngle = realRayAngle - br;
+            relativeAngle = realRayAngle - br;
             double halfWay = Math.toDegrees(Math.atan(rxDelta / byDelta));
             if (relativeAngle < halfWay) {
                 relativeAngle = halfWay - relativeAngle;
@@ -64,21 +70,27 @@ public class RayCasts {
                 relativeAngle = relativeAngle - halfWay;
                 firstXStep = -(Math.tan(Math.toRadians(relativeAngle)) * byDelta);
             }
-//            drawDebug(g, String.valueOf(relativeAngle + ((bl - br)/2)), 25);
-//            if (relativeAngle < (bl - br)/2){
-//                firstXStep = (TILE_SIZE/2) - (Math.tan(Math.toRadians(relativeAngle)) * byDelta);
-//            } else {
-//
-////                double angle = ((bl - br)/2) - relativeAngle;
-//                double angle = relativeAngle % ((bl - br)/2);
-//                drawDebug(g, String.valueOf(angle), 50);
-//                relativeAngle = relativeAngle - (bl - br)/2;
-//                firstXStep = (lxDelta-(Math.tan(Math.toRadians(angle)) * byDelta));
-//            }
         }
         else if (realRayAngle > tr) {
             realHeading = "right";
             firstXStep = rxDelta;
+
+            relativeAngle = realRayAngle-tr;
+            double test = realRayAngle - tr;
+            double halfWay = Math.toDegrees(Math.atan(tyDelta / rxDelta));
+            if (test < halfWay) {
+                test = halfWay - test;
+                firstYStep = (Math.tan(Math.toRadians(test)) * rxDelta);
+//                firstYStep = 1;
+
+            } else {
+                test = test - halfWay;
+                firstYStep = (Math.tan(Math.toRadians(test)) * rxDelta);
+//                firstYStep = 45;
+            }
+            drawDebug(g, String.valueOf(tr), 10);
+            drawDebug(g, String.valueOf(halfWay), 25);
+            drawDebug(g, String.valueOf(test), 50);
 
         } else {
             realHeading = "up";
