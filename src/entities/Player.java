@@ -6,16 +6,15 @@ import java.awt.*;
 import static utils.helpers.getLineAngle;
 
 public class Player extends Entity{
-    private RayCasts casts;
+    private RayCaster rayCaster;
     private boolean up, down, left, right;
     private float playerSpeed = 0.75f;
-    public float heading = 27.0f;
     public double mouseAngle = 0;
 
 
     public Player(float x, float y, int width, int height) {
         super(x, y, width, height);
-        casts = new RayCasts();
+        rayCaster = new RayCaster();
 
     }
     public void update() {
@@ -39,8 +38,7 @@ public class Player extends Entity{
 
     public void render(Graphics g) {
         for (int i = 0; i <360; i += 7) {
-            casts.addCast(g, x + (width/2f), y + (height/2f), i);
-//            i += 2;
+            rayCaster.addCast(g, x + (width/2f), y + (height/2f), i);
         }
 //        casts.addCast(g, x + (width/2f), y + (height/2f), mouseAngle);
 

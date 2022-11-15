@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="player heading direction + more progress on rays">
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Working first step of cast for all directions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/RayCasts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/RayCasts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/RayCasts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/RayCaster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +90,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668521233852</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Working first step of cast for all directions">
+      <created>1668538380093</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1668538380093</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,7 +118,8 @@
     <MESSAGE value="Started sending casts first move" />
     <MESSAGE value="More work on the ray casting" />
     <MESSAGE value="Working downward first casts" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working downward first casts" />
+    <MESSAGE value="Working first step of cast for all directions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working first step of cast for all directions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -121,11 +128,6 @@
           <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
           <line>26</line>
           <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/utils/helpers.java</url>
-          <line>6</line>
-          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

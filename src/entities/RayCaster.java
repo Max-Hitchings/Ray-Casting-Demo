@@ -5,12 +5,7 @@ import java.awt.*;
 import static main.Game.TILE_SIZE;
 import static utils.helpers.*;
 
-public class RayCasts {
-//    float heading = 25f;
-    public RayCasts() {
-//        newCast(g, player.x, player.y, player.heading);
-    }
-
+public class RayCaster {
     public void addCast(Graphics g, double startX, double startY, double heading) {
 //        ty - Top Y
         double tyDelta =  -(startY % TILE_SIZE);
@@ -60,13 +55,21 @@ public class RayCasts {
             realHeading = "up";
             firstYStep = tyDelta;
             firstXStep = -(Math.tan(Math.toRadians(heading)) * (tyDelta));
-
         }
         drawCast(g, new Point((int) startX, (int) startY) , new Point((int) (startX + firstXStep), (int) (startY + firstYStep)));
 
         drawDebug(g, String.valueOf(heading), 260);
         drawDebug(g, realHeading, 240);
 
+    }
+    private double getOppositeLength(double theta, double height, double halfWidth){
+        double halfWay = Math.toDegrees(Math.atan(halfWidth / height));
+        if (theta < halfWay) {
+            return Math.tan(Math.toRadians(halfWay - theta)) * height;
+
+        } else {
+            return -(Math.tan(Math.toRadians(theta - halfWay)) * height);
+        }
     }
     private void drawCast(Graphics g, Point start, Point end) {
         g.setColor(Color.GREEN);
