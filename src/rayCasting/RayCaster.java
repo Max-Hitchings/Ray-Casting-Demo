@@ -1,4 +1,4 @@
-package entities;
+package rayCasting;
 
 import main.Game;
 
@@ -73,11 +73,16 @@ public class RayCaster {
         double finishY = startY + firstYStep;
 
 //        TODO Fix this
+        double gradient = getGradient(startX, startY, finishX, finishY);
+        drawDebug(g, String.valueOf(gradient), 60);
         if (!checkCollision(g, finishX, finishY, realHeading)) {
             switch (realHeading) {
                 case RIGHT ->  {
-                    finishX += getOppositeLength(relativeAngle, TILE_SIZE, TILE_SIZE - finishY);
-                    finishY += TILE_SIZE - ((startY + firstYStep) % TILE_SIZE);
+                    finishX += -(TILE_SIZE - (finishY % TILE_SIZE)) / gradient;
+                    finishY += TILE_SIZE - (finishY % TILE_SIZE);
+//                    finishX += Math.tan(Math.toRadians(180-heading)) * (finishY%16);
+////                    finishX -= getOppositeLength(relativeAngle, TILE_SIZE, finishY%16);
+//                    finishY += TILE_SIZE - ((startY + firstYStep) % TILE_SIZE);
                 }
             }
         }

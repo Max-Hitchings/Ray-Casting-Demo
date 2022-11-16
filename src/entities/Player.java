@@ -2,6 +2,7 @@ package entities;
 
 
 import main.Game;
+import rayCasting.RayCaster;
 
 import java.awt.*;
 
@@ -39,7 +40,7 @@ public class Player extends Entity{
 
 
     public void render(Graphics g) {
-//        for (int i = 0; i <360; i += 7) {
+//        for (int i = 0; i <360; i += 1) {
 //            rayCaster.addCast(g, x + (width/2f), y + (height/2f), i);
 //        }
         rayCaster.addCast(g, x + (width/2f), y + (height/2f), mouseAngle);

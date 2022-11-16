@@ -3,6 +3,9 @@ package utils;
 import java.awt.*;
 
 public class helpers {
+    public static double getGradient(double startX, double startY, double endX, double endY) {
+        return (startY-endY) / (endX-startX);
+    }
     public static double getLineAngle(double startX, double startY, double endX, double endY) {
         return (Math.toDegrees(Math.atan2(startY - endY, startX - endX)) + 270)%360;
     }
