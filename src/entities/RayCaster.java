@@ -1,11 +1,20 @@
 package entities;
 
+import main.Game;
+
 import java.awt.*;
 
 import static main.Game.TILE_SIZE;
 import static utils.helpers.*;
+import static utils.Constants.rayDirection;
+import static utils.Constants.gridBlocks;
+
 
 public class RayCaster {
+    Game game;
+    public RayCaster(Game game) {
+        this.game = game;
+    }
     public void addCast(Graphics g, double startX, double startY, double heading) {
 //        ty - Top Y
         double tyDelta =  -(startY % TILE_SIZE);
@@ -26,41 +35,85 @@ public class RayCaster {
         double tl = getLineAngle(startX, startY, startX - lxDelta, startY + tyDelta);
 
         double firstYStep, firstXStep, relativeAngle;
-        String realHeading;
+        rayDirection realHeading;
         if (heading > tl) {
-            realHeading = "up";
+            realHeading = rayDirection.UP;
             firstYStep = tyDelta;
+            relativeAngle = heading;
             firstXStep = -(Math.tan(Math.toRadians(360 - heading)) * -tyDelta);
 
         } else if (heading > bl) {
-            realHeading = "left";
+            realHeading = rayDirection.LEFT;
             firstXStep = -lxDelta;
             relativeAngle = heading - bl;
 
             firstYStep = getOppositeLength(relativeAngle, lxDelta, byDelta);
         } else if (heading > br) {
-            realHeading = "down";
+            realHeading = rayDirection.DOWN;
             firstYStep = byDelta;
             relativeAngle = heading - br;
 
             firstXStep = getOppositeLength(relativeAngle, byDelta, rxDelta);
         }
         else if (heading > tr) {
-            realHeading = "right";
+            realHeading = rayDirection.RIGHT;
             firstXStep = rxDelta;
             relativeAngle = heading - tr;
 
             firstYStep = -getOppositeLength(relativeAngle, rxDelta, -tyDelta);
+
         } else {
-            realHeading = "up";
+            realHeading = rayDirection.UP;
             firstYStep = tyDelta;
+            relativeAngle = heading;
             firstXStep = -(Math.tan(Math.toRadians(heading)) * (tyDelta));
         }
-        drawCast(g, new Point((int) startX, (int) startY) , new Point((int) (startX + firstXStep), (int) (startY + firstYStep)));
+
+        double finishX = startX + firstXStep;
+        double finishY = startY + firstYStep;
+
+//        TODO Fix this
+        if (!checkCollision(g, finishX, finishY, realHeading)) {
+            switch (realHeading) {
+                case RIGHT ->  {
+                    finishX += getOppositeLength(relativeAngle, TILE_SIZE, TILE_SIZE - finishY);
+                    finishY += TILE_SIZE - ((startY + firstYStep) % TILE_SIZE);
+                }
+            }
+        }
+        drawCast(g, new Point((int) startX, (int) startY) , new Point((int) finishX, (int) finishY));
 
         drawDebug(g, String.valueOf(heading), 260);
-        drawDebug(g, realHeading, 240);
+        drawDebug(g, String.valueOf(realHeading), 240);
 
+    }
+    private boolean checkCollision(Graphics g, double x, double y, rayDirection direction) {
+        x = x / TILE_SIZE;
+        y = y / TILE_SIZE;
+        gridBlocks block;
+        switch (direction) {
+            case UP -> {
+                block = game.getGrid().getGridBlock((int) x, (int) y-1);
+                drawDebug(g, String.valueOf(block), 2);
+                return block == gridBlocks.WALL;
+            }
+            case DOWN -> {
+                block = game.getGrid().getGridBlock((int) x, (int) y);
+                drawDebug(g, String.valueOf(block), 15);
+                return block == gridBlocks.WALL;
+            }
+            case RIGHT -> {
+                block = game.getGrid().getGridBlock((int) x, (int) y);
+                drawDebug(g, String.valueOf(block), 30);
+                return block == gridBlocks.WALL;
+            }
+            case LEFT -> {
+                block = game.getGrid().getGridBlock((int) x - 1, (int) y);
+                drawDebug(g, String.valueOf(block), 45);
+                return block == gridBlocks.WALL;
+            }
+        }
+        return false;
     }
     private double getOppositeLength(double theta, double height, double halfWidth){
         double halfWay = Math.toDegrees(Math.atan(halfWidth / height));

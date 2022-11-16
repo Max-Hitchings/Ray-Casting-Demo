@@ -13,7 +13,6 @@ public class Game implements Runnable{
 
     private final int FPS_SET = 144;
     private final int TPS_SET = 200;
-    int x = 10;
 
     public final static int TILE_NORMAL_SIZE = 32;
     public final static float SCALE = 2f;
@@ -34,8 +33,12 @@ public class Game implements Runnable{
     }
 
     private void initClasses() {
-        player = new Player(27, 27, 10, 10);
+        player = new Player(this, 27, 27, 10, 10);
         gameGrid = new GameGrid();
+    }
+
+    public GameGrid getGrid() {
+        return gameGrid;
     }
 
     private void startGameLoop() {

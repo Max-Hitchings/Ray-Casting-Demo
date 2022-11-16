@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Working first step of cast for all directions">
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Left cast works - right dosent">
+      <change afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/RayCasts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/RayCaster.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/entities/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/RayCaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,8 +129,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
-          <line>26</line>
+          <line>28</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

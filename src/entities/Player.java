@@ -1,6 +1,8 @@
 package entities;
 
 
+import main.Game;
+
 import java.awt.*;
 
 import static utils.helpers.getLineAngle;
@@ -12,9 +14,9 @@ public class Player extends Entity{
     public double mouseAngle = 0;
 
 
-    public Player(float x, float y, int width, int height) {
-        super(x, y, width, height);
-        rayCaster = new RayCaster();
+    public Player(Game game, float x, float y, int width, int height) {
+        super(game, x, y, width, height);
+        rayCaster = new RayCaster(game);
 
     }
     public void update() {
@@ -37,10 +39,10 @@ public class Player extends Entity{
 
 
     public void render(Graphics g) {
-        for (int i = 0; i <360; i += 7) {
-            rayCaster.addCast(g, x + (width/2f), y + (height/2f), i);
-        }
-//        casts.addCast(g, x + (width/2f), y + (height/2f), mouseAngle);
+//        for (int i = 0; i <360; i += 7) {
+//            rayCaster.addCast(g, x + (width/2f), y + (height/2f), i);
+//        }
+        rayCaster.addCast(g, x + (width/2f), y + (height/2f), mouseAngle);
 
 //        for (int j = 360; j > 315; j--) {
 //            casts.newCast(g, x + (width/2f), y + (height/2f), j);

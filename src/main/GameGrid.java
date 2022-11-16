@@ -3,17 +3,19 @@ package main;
 import java.awt.*;
 
 import static main.Game.*;
+import static utils.Constants.gridBlocks;
+
 
 public class GameGrid {
     private final String[] layout = {"################",
-                    "################",
             "################",
             "################",
-            "################",
-            "################",
-            "################",
-            "################",
-                    "################"};
+            "#####00000######",
+            "########000000##",
+            "#00000000000#####",
+            "###0##00########",
+            "#####00#########",
+            "################"};
     private boolean[][] grid;
     public GameGrid() {
         constructGrid();
@@ -33,6 +35,20 @@ public class GameGrid {
                 }
             }
         }
+    }
+
+    public gridBlocks getGridBlock(int x, int y) {
+//        if (y > grid.length ||y < 0) {
+//            System.out.println(y);
+//        }
+        if (y < 0 || x < 0) {
+            return gridBlocks.WALL;
+        }
+//        if (x > grid[0].length || y < 0) {
+//            System.out.println(x);
+//        }
+        if (grid[y][x]) return gridBlocks.WALL;
+        return gridBlocks.EMPTY;
     }
 
     private void constructGrid() {
