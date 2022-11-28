@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Left cast works - right dosent">
-      <change afterPath="$PROJECT_DIR$/src/rayCasting/Ray.java" afterDir="false" />
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Still trying (Not working)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rayCasting/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +51,8 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -75,6 +78,12 @@
       <option name="presentableId" value="Default" />
       <updated>1667932876561</updated>
       <workItem from="1667932877957" duration="4694000" />
+      <workItem from="1668792807109" duration="604000" />
+      <workItem from="1669419956363" duration="787000" />
+      <workItem from="1669508679730" duration="216000" />
+      <workItem from="1669559461359" duration="13852000" />
+      <workItem from="1669655635749" duration="3703000" />
+      <workItem from="1669662024062" duration="10584000" />
     </task>
     <task id="LOCAL-00001" summary="Started sending casts first move">
       <created>1668122687056</created>
@@ -104,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1668538380093</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Still trying (Not working)">
+      <created>1668638153449</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1668638153449</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,7 +142,8 @@
     <MESSAGE value="More work on the ray casting" />
     <MESSAGE value="Working downward first casts" />
     <MESSAGE value="Working first step of cast for all directions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working first step of cast for all directions" />
+    <MESSAGE value="Still trying (Not working)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Still trying (Not working)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -136,17 +153,11 @@
           <line>28</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/GameGrid.java</url>
-          <line>47</line>
-          <option name="timeStamp" value="34" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/rayCasting/RayCaster.java</url>
-          <line>80</line>
-          <option name="timeStamp" value="39" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

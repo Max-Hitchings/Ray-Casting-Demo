@@ -9,10 +9,10 @@ import static utils.Constants.gridBlocks;
 public class GameGrid {
     private final String[] layout = {"################",
             "################",
-            "################",
-            "#####00000######",
-            "########000000##",
-            "#00000000000#####",
+            "##000###########",
+            "##0#0###########",
+            "##000###000000##",
+            "######000000#####",
             "###0##00########",
             "#####00#########",
             "################"};
@@ -35,6 +35,13 @@ public class GameGrid {
                 }
             }
         }
+    }
+
+    public boolean checkCollision(int x, int y) {
+        if (y < 0 || x < 0 || y >= 9 || x >= 16) {
+            return true;
+        }
+        return grid[y][x];
     }
 
     public gridBlocks getGridBlock(int x, int y) {
