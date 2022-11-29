@@ -36,7 +36,7 @@ public class Ray {
 
         boolean endFlag = false;
         while (!endFlag) {
-            if (xLine.len < (10*TILE_SIZE) && yLine.len < (10*TILE_SIZE)){
+            if (xLine.len < (10*TILE_SIZE) || yLine.len < (10*TILE_SIZE)){
                 if (yLine.len > xLine.len) {
                     if (!checkCollisionX(xLine.x2, xLine.y2, g)) {
                         stepX();
@@ -61,10 +61,10 @@ public class Ray {
         } else {
             drawCast(g, yLine, Color.RED);
         }
-        drawDebug(g, yNormalStep + " y", 230);
-        drawDebug(g, (yLine.len)/TILE_SIZE + " y", 245);
-        drawDebug(g, xNormalStep + " x", 200);
-        drawDebug(g, (xLine.len*gradient)/TILE_SIZE + " x", 215);
+//        drawDebug(g, yNormalStep + " y", 230);
+//        drawDebug(g, (yLine.len)/TILE_SIZE + " y", 245);
+//        drawDebug(g, xNormalStep + " x", 200);
+//        drawDebug(g, (xLine.len*gradient)/TILE_SIZE + " x", 215);
     }
     private void stepX() {
         xLine.x2 += TILE_SIZE * xDir;
@@ -137,9 +137,6 @@ public class Ray {
     }
 
     private double getGradient(double heading) {
-        if (heading == 180 || heading == 0 ) return Double.MAX_VALUE;
-
-        double tan = Math.tan(Math.toRadians(heading + 90));
         if (heading < 180) {
             xDir = 1;
         } else {
@@ -151,6 +148,9 @@ public class Ray {
         } else {
             yDir = 1;
         }
+        if (heading == 180 || heading == 0 ) return Double.MAX_VALUE;
+
+        double tan = Math.tan(Math.toRadians(heading + 90));
         return tan;
     }
 }

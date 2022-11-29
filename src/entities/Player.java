@@ -44,16 +44,19 @@ public class Player extends Entity{
     public void render(Graphics g) {
         Point2D.Double pos = new Point2D.Double(x+ (width/2f), y+ (height/2f));
         Ray r = new Ray(game.getGrid(), pos, mouse.angle, g);
-        drawDebug(g, String.valueOf(-r.gradient), 100);
-        drawDebug(g, String.valueOf(mouse.angle), 115);
+//        drawDebug(g, String.valueOf(-r.gradient), 100);
+//        drawDebug(g, String.valueOf(mouse.angle), 115);
+//
+//        drawDebug(g, String.valueOf(r.xNormalStep), 300);
+//        drawDebug(g, String.valueOf(r.yNormalStep), 315);
+//        drawDebug(g, String.valueOf(r.xNormalStep), 300);
 
-        drawDebug(g, String.valueOf(r.xNormalStep), 300);
-        drawDebug(g, String.valueOf(r.yNormalStep), 315);        drawDebug(g, String.valueOf(r.xNormalStep), 300);
+
+//        for (float i = 0; i <360; i += 1) {
+//            var x = new Ray(game.getGrid(), pos, i, g);
+//        }
 
 
-        for (float i = 0; i <360; i += 5) {
-            var x = new Ray(game.getGrid(), pos, i, g);
-        }
 
         g.setColor(new Color(255, 0, 0));
         g.fillOval((int) x,(int) y, width, height);
