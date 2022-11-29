@@ -24,9 +24,6 @@ public class Game implements Runnable{
 
     public Game() {
         initClasses();
-
-        gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
-        gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
 
         startGameLoop();
@@ -35,6 +32,9 @@ public class Game implements Runnable{
     private void initClasses() {
         player = new Player(this, 27, 27, 10, 10);
         gameGrid = new GameGrid();
+
+        gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
+        gameWindow = new GameWindow(gamePanel);
     }
 
     public GameGrid getGrid() {
@@ -98,7 +98,7 @@ public class Game implements Runnable{
 
             if (System.currentTimeMillis() - lastCheck >= 1000) {
                 lastCheck = System.currentTimeMillis();
-                System.out.println("FPS " + frames + " | TPS: " + updates);
+//                System.out.println("FPS " + frames + " | TPS: " + updates);
                 frames = 0;
                 updates = 0;
             }

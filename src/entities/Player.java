@@ -47,19 +47,13 @@ public class Player extends Entity{
         drawDebug(g, String.valueOf(-r.gradient), 100);
         drawDebug(g, String.valueOf(mouse.angle), 115);
 
-//        drawCast(g, r.xLine, Color.BLUE);
-//        drawCast(g, r.yLine, Color.ORANGE);
         drawDebug(g, String.valueOf(r.xNormalStep), 300);
         drawDebug(g, String.valueOf(r.yNormalStep), 315);        drawDebug(g, String.valueOf(r.xNormalStep), 300);
-//        drawDebug(g, String.valueOf(r.xLine.getLen()), 315);
-//        drawDebug(g, String.valueOf(r.yNormalStep), 315);
 
 
-//        for (int i = 0; i <360; i += 1.1) {
-//            var x = new Ray(game.getGrid(), pos, i);
-//            drawCast(g, x.xLine, Color.BLUE);
-////            drawCast(g, x.yLine, Color.ORANGE);
-//        }
+        for (float i = 0; i <360; i += 5) {
+            var x = new Ray(game.getGrid(), pos, i, g);
+        }
 
         g.setColor(new Color(255, 0, 0));
         g.fillOval((int) x,(int) y, width, height);

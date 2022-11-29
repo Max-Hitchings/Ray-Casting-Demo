@@ -42,7 +42,6 @@ public class Ray {
                         stepX();
                     } else {
 //                        drawDebug(g, xLine.len + " x", 200);
-
                         endFlag = true;
                     }
                 } else {
@@ -62,28 +61,21 @@ public class Ray {
         } else {
             drawCast(g, yLine, Color.RED);
         }
-        drawDebug(g, yLine.len + " y", 215);
-        drawDebug(g, xLine.len + " x", 200);
+        drawDebug(g, yNormalStep + " y", 230);
+        drawDebug(g, (yLine.len)/TILE_SIZE + " y", 245);
+        drawDebug(g, xNormalStep + " x", 200);
+        drawDebug(g, (xLine.len*gradient)/TILE_SIZE + " x", 215);
     }
-
-    private void step() {
-        if (yLine.len > xLine.len) {
-            stepX();
-        } else {
-            stepY();
-        }
-    }
-
     private void stepX() {
-        xLine.x1 += TILE_SIZE * xDir;
-        xLine.y1 += TILE_SIZE * gradient * xDir;
+        xLine.x2 += TILE_SIZE * xDir;
+        xLine.y2 += TILE_SIZE * gradient * xDir;
         xLine.len += xNormalStep;
     }
 
     private void stepY() {
         yLine.y2 += TILE_SIZE * yDir;
         yLine.x2 += TILE_SIZE / gradient * yDir;
-        xLine.len += yNormalStep;
+        yLine.len += yNormalStep;
     }
 
     private void firstStep() {
@@ -112,21 +104,32 @@ public class Ray {
     }
 
     private boolean checkCollisionX(double x, double y, Graphics g) {
-        if (gameGrid.checkCollision((int) Math.floor((x / TILE_SIZE)+xDir), (int) Math.floor(y / TILE_SIZE))) {
+        int xDelta = 0;
+        if (xDir == -1) {
+            xDelta = -1;
+        }
+
+        if (gameGrid.checkCollision((int) Math.floor((x / TILE_SIZE) + xDelta), (int) Math.floor(y / TILE_SIZE))) {
             drawCircle(g, (int)x, (int)y, Color.CYAN);
         } else {
             drawFillCircle(g, (int)x, (int)y, Color.CYAN);
         }
-        return gameGrid.checkCollision((int) Math.floor((x / TILE_SIZE)+xDir), (int) Math.floor(y / TILE_SIZE));
+        return gameGrid.checkCollision((int) Math.floor((x / TILE_SIZE) + xDelta), (int) Math.floor(y / TILE_SIZE));
     }
     private boolean checkCollisionY(double x, double y, Graphics g) {
-        if (gameGrid.checkCollision((int) Math.floor(x / TILE_SIZE), (int) Math.floor((y / TILE_SIZE) - yDir))) {
+        int yDelta = 0;
+        if (yDir == -1) {
+            yDelta = -1;
+        }
+
+
+        if (gameGrid.checkCollision((int) Math.floor(x / TILE_SIZE) , (int) Math.floor((y / TILE_SIZE) + yDelta))) {
             drawCircle(g, (int)x, (int)y, Color.GREEN);
         } else {
             drawFillCircle(g, (int)x, (int)y, Color.GREEN);
         }
 
-        return gameGrid.checkCollision((int) Math.floor(x / TILE_SIZE), (int) Math.floor((y / TILE_SIZE) - yDir));
+        return gameGrid.checkCollision((int) Math.floor(x / TILE_SIZE), (int) Math.floor((y / TILE_SIZE) + yDelta));
     }
 
     private double getLineLength(Line line) {
@@ -157,9 +160,5 @@ class Line extends Line2D.Double {
 
     public Line(Point2D.Double start, Point2D.Double end) {
         super(start, end);
-    }
-
-    public double getLen() {
-        return len;
     }
 }
