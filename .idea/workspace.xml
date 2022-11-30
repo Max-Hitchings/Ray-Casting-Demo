@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Fixed some bugs in DDA">
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Fixed DDA bug for right angles">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rayCasting/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -80,6 +85,9 @@
       <workItem from="1669559461359" duration="13852000" />
       <workItem from="1669655635749" duration="3703000" />
       <workItem from="1669662024062" duration="10584000" />
+      <workItem from="1669729610797" duration="526000" />
+      <workItem from="1669798949717" duration="6068000" />
+      <workItem from="1669816096193" duration="938000" />
     </task>
     <task id="LOCAL-00001" summary="Started sending casts first move">
       <created>1668122687056</created>
@@ -123,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669719694302</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Fixed DDA bug for right angles">
+      <created>1669720535784</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669720535784</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,29 +162,21 @@
     <MESSAGE value="Working first step of cast for all directions" />
     <MESSAGE value="Still trying (Not working)" />
     <MESSAGE value="Fixed some bugs in DDA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed some bugs in DDA" />
+    <MESSAGE value="Fixed DDA bug for right angles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed DDA bug for right angles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/rayCasting/Ray.java</url>
-          <line>105</line>
-          <properties class="rayCasting.Ray" method="checkCollisionX">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/rayCasting/Ray.java</url>
+          <line>143</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/Game.java</url>
           <line>39</line>
-          <option name="timeStamp" value="60" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/rayCasting/Ray.java</url>
-          <line>38</line>
-          <option name="timeStamp" value="61" />
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
