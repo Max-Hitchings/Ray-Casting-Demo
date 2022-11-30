@@ -31,7 +31,7 @@ public class Game implements Runnable{
 
     private void initClasses() {
         gameGrid = new GameGrid();
-        player = new Player(this, 27, 27, 10, 10, 45);
+        player = new Player(this, 95);
         gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
         gameWindow = new GameWindow(gamePanel);
     }

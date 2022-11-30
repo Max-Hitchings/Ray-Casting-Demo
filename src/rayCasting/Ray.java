@@ -31,6 +31,14 @@ public class Ray {
         update(new Point2D.Double(), 0);
     }
     public void update(Point2D.Double origin, double heading) {
+        heading += headingDelta;
+
+//        clamp heading to 0 <= heading <= 360
+        if (heading < 0) {
+            heading = 360 + heading;
+        } else if (heading > 360) {
+            heading -= 360;
+        }
         this.heading = heading;
         this.origin = origin;
 
@@ -57,14 +65,12 @@ public class Ray {
                     if (!checkCollisionX(xLine.x2, xLine.y2)) {
                         stepX();
                     } else {
-//                        drawDebug(g, xLine.len + " x", 200);
                         endFlag = true;
                     }
                 } else {
                     if (!checkCollisionY(yLine.x2, yLine.y2)) {
                         stepY();
                     } else {
-//                        drawDebug(g, yLine.len + " y", 215);
                         endFlag = true;
                     }
                 }
@@ -139,7 +145,6 @@ public class Ray {
 //        } else {
 //            drawFillCircle(g, (int)x, (int)y, Color.GREEN);
 //        }
-
         return this.gameGrid.checkCollision((int) Math.floor(x / TILE_SIZE), (int) Math.floor((y / TILE_SIZE) + yDelta));
     }
 
@@ -160,14 +165,12 @@ public class Ray {
             yDir = 1;
         }
         if (heading == 180 || heading == 0 ) return Double.MAX_VALUE;
-
         return Math.tan(Math.toRadians(heading + 90));
     }
 }
 
 class Line extends Line2D.Double {
     public double len;
-
     public Line(Point2D.Double start, Point2D.Double end) {
         super(start, end);
     }

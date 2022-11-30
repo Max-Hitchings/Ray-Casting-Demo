@@ -16,14 +16,17 @@ public class RayCaster {
         this.fov = fov;
         rays = new Ray[fov];
 
+        float halfFov = fov / 2;
+
         for (int i = 0; i < fov; i++) {
-            rays[i] = new Ray(game.getGrid(), i);
+            rays[i] = new Ray(game.getGrid(), (int)(i-halfFov));
         }
     }
 
     public void update(Point2D.Double newOrigin, double newHeading) {
         origin = newOrigin;
         heading = newHeading;
+
         for (Ray ray : rays) {
             ray.update(origin, heading);
         }

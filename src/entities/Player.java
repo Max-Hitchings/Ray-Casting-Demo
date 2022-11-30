@@ -7,6 +7,7 @@ import rayCasting.RayCaster;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
+import static main.Game.TILE_SIZE;
 import static utils.helpers.drawDebug;
 import static utils.helpers.getLineAngle;
 
@@ -15,12 +16,10 @@ public class Player extends Entity{
     private boolean up, down, left, right;
     private final float playerSpeed = 0.75f;
     public Mouse mouse = new Mouse();
-
     private int fov;
 
-
-    public Player(Game game, float x, float y, int width, int height, int fov) {
-        super(game, x, y, width, height);
+    public Player(Game game, int fov) {
+        super(game, TILE_SIZE/2, TILE_SIZE/2, 10, 10);
         this.fov = fov;
         initClasses();
     }
@@ -52,6 +51,10 @@ public class Player extends Entity{
 
     public void render(Graphics g) {
         rayCaster.render(g);
+        drawPlayer(g);
+    }
+
+    public void drawPlayer(Graphics g) {
         g.setColor(new Color(255, 0, 0));
         g.fillOval((int) x,(int) y, width, height);
     }
