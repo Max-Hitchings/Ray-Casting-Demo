@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Fixed DDA bug for right angles">
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Refactor to make rays more independent and use RayCaster to control them">
+      <change afterPath="$PROJECT_DIR$/src/inputs/Mouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rayCasting/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +93,9 @@
       <workItem from="1669729610797" duration="526000" />
       <workItem from="1669798949717" duration="6068000" />
       <workItem from="1669816096193" duration="938000" />
+      <workItem from="1669848739295" duration="248000" />
+      <workItem from="1669885586534" duration="19294000" />
+      <workItem from="1670104744649" duration="332000" />
     </task>
     <task id="LOCAL-00001" summary="Started sending casts first move">
       <created>1668122687056</created>
@@ -169,8 +178,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/rayCasting/RayCaster.java</url>
-          <line>36</line>
+          <line>75</line>
           <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/rayCasting/RayCaster.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/inputs/KeyboardInputs.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

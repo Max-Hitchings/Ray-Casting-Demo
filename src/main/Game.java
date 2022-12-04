@@ -1,6 +1,7 @@
 package main;
 
 import entities.Player;
+import inputs.Mouse;
 
 import java.awt.*;
 
@@ -10,6 +11,7 @@ public class Game implements Runnable{
     private Thread gameThread;
     private Player player;
     private GameGrid gameGrid;
+    public Mouse mouse;
 
     private final int FPS_SET = 144;
     private final int TPS_SET = 200;
@@ -22,18 +24,21 @@ public class Game implements Runnable{
     public final static int GAME_WIDTH = TILE_SIZE * TILES_IN_WIDTH;
     public final static int GAME_HEIGHT = TILE_SIZE * TILES_IN_HEIGHT;
 
-    public Game() {
+    public Game() throws AWTException {
+
         initClasses();
+        gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
+        gameWindow = new GameWindow(gamePanel);
         gamePanel.requestFocus();
 
         startGameLoop();
     }
 
-    private void initClasses() {
+    private void initClasses() throws AWTException {
         gameGrid = new GameGrid();
         player = new Player(this, 95);
-        gamePanel = new GamePanel(this, GAME_WIDTH, GAME_HEIGHT);
-        gameWindow = new GameWindow(gamePanel);
+        mouse = new Mouse(this);
+
     }
 
     public GameGrid getGrid() {
@@ -46,6 +51,7 @@ public class Game implements Runnable{
     }
 
     public void update() {
+        mouse.update();
         player.update();
     }
     public void render(Graphics g) {
@@ -107,5 +113,9 @@ public class Game implements Runnable{
     }
     public Player getPlayer() {
         return player;
+    }
+
+    public Mouse getMouse() {
+        return mouse;
     }
 }

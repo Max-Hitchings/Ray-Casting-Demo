@@ -11,9 +11,13 @@ public class helpers {
         return (Math.toDegrees(Math.atan2(startY - endY, startX - endX)) + 270)%360;
     }
 
-    public static void drawDebug(Graphics g, String text, int offset) {
-        g.setColor(Color.ORANGE);
+    public static void drawDebug(Graphics g, String text, int offset, Color c) {
+        g.setColor(c);
         g.drawString(text, 5, 15 + offset);
+    }public static void drawDebug(Graphics g, String text, int offset) {
+        drawDebug(g, text, offset, Color.ORANGE);
+    } public static void drawDebug(Graphics g, double text, int offset, Color c) {
+        drawDebug(g, String.valueOf(text), offset, c);
     }
     public static void drawCast(Graphics g, Line2D.Double line, Color c) {
         g.setColor(c);

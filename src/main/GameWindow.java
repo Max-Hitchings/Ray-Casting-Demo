@@ -20,10 +20,13 @@ public class GameWindow extends JFrame {
         jframe.addWindowFocusListener(new WindowFocusListener() {
             @Override
             public void windowGainedFocus(WindowEvent e) {
+                gamePanel.getGame().getMouse().lock();
             }
 
             @Override
             public void windowLostFocus(WindowEvent e) {
+                gamePanel.getGame().getMouse().unLock();
+
                 gamePanel.getGame().getPlayer().cancelMovement();
             }
         });

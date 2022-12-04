@@ -7,7 +7,7 @@ import rayCasting.RayCaster;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-import static main.Game.TILE_SIZE;
+import static main.Game.*;
 import static utils.helpers.drawDebug;
 import static utils.helpers.getLineAngle;
 
@@ -17,22 +17,35 @@ public class Player extends Entity{
     private final float playerSpeed = 0.75f;
     public Mouse mouse = new Mouse();
     private int fov;
+    private double heading;
 
     public Player(Game game, int fov) {
-        super(game, TILE_SIZE/2, TILE_SIZE/2, 10, 10);
-        this.fov = fov;
+        super(game, (TILE_SIZE/2)*2, (TILE_SIZE/2)*2, 10, 10);
+        this.fov = 90;
         initClasses();
     }
 
     private void initClasses() {
-        rayCaster = new RayCaster(game, fov);
+        rayCaster = new RayCaster(game, fov, 10);
         mouse.pos = new Point2D.Double(0,0);
     }
 
     public void update() {
         updatePos();
         Point2D.Double pos = new Point2D.Double(x+ (width/2f), y+ (height/2f));
-        rayCaster.update(pos, mouse.angle);
+        rayCaster.update(pos, heading);
+    }
+
+    public void updateHeading(double headingDelta) {
+        heading += headingDelta;
+
+//        clamp heading to 0 <= heading <= 360
+        if (heading < 0) {
+            heading = 360 + heading;
+        } else if (heading > 360) {
+            heading -= 360;
+        }
+//        game.mouseRobot.mouseMove(GAME_WIDTH/2, GAME_HEIGHT/2);
     }
 
     private void updatePos() {

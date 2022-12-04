@@ -18,16 +18,18 @@ public class Ray {
     //        lx - Left X
     double tyDelta, byDelta, rxDelta, lxDelta;
     public double gradient, heading;
-    public int headingDelta;
+    public float headingDelta;
     public double xNormalStep, yNormalStep;
     public Line xLine, yLine, finalCast;
+    public int yX = 0;
     int xDir, yDir;
     public Ray(GameGrid gameGrid) {
         this(gameGrid, 0);
     }
-    public Ray(GameGrid gameGrid, int headingDelta) {
+    public Ray(GameGrid gameGrid, float headingDelta) {
         this.gameGrid = gameGrid;
         this.headingDelta = headingDelta;
+//        this.headingDelta = 20;
         update(new Point2D.Double(), 0);
     }
     public void update(Point2D.Double origin, double heading) {
@@ -56,6 +58,7 @@ public class Ray {
     }
     public void draw(Graphics g) {
         drawCast(g, finalCast, Color.ORANGE);
+//        drawDebug(g, String.valueOf(finalCast.len), 20);
     }
     private void completeRay() {
         boolean endFlag = false;
@@ -80,8 +83,10 @@ public class Ray {
         }
         if (yLine.len > xLine.len) {
             finalCast = (Line) xLine.clone();
+            yX = 1;
         } else {
             finalCast = (Line) yLine.clone();
+            yX = 0;
         }
     }
     private void stepX() {
