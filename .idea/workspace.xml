@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Started to render rays onto screen (3d) + added proper camer0a panning with mouse (need to do movment next">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="starting to get movement working properly">
+      <change afterPath="$PROJECT_DIR$/src/utils/Crosshair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputs/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

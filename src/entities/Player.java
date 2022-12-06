@@ -3,6 +3,7 @@ package entities;
 
 import main.Game;
 import rayCasting.RayCaster;
+import utils.Crosshair;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
@@ -12,6 +13,7 @@ import static utils.helpers.*;
 
 public class Player extends Entity{
     private RayCaster rayCaster;
+    private Crosshair crosshair;
     private boolean up, down, left, right;
     private final float playerSpeed = 0.33f;
     public Mouse mouse = new Mouse();
@@ -27,12 +29,24 @@ public class Player extends Entity{
     private void initClasses() {
         rayCaster = new RayCaster(game, fov, 10);
         mouse.pos = new Point2D.Double(0,0);
+        crosshair = new Crosshair(15, 15, 2);
     }
 
     public void update() {
         updatePos();
         Point2D.Double pos = new Point2D.Double(x+ (width/2f), y+ (height/2f));
         rayCaster.update(pos, heading);
+    }
+
+    public void render(Graphics g) {
+        rayCaster.render(g);
+        crosshair.draw(g);
+        drawPlayer(g);
+    }
+
+    public void drawPlayer(Graphics g) {
+        g.setColor(new Color(255, 0, 0));
+        g.fillOval((int) x,(int) y, width, height);
     }
 
     public void updateHeading(double headingDelta) {
@@ -95,16 +109,6 @@ public class Player extends Entity{
         BACKWARD,
         LEFT,
         RIGHT
-    }
-
-    public void render(Graphics g) {
-        rayCaster.render(g);
-        drawPlayer(g);
-    }
-
-    public void drawPlayer(Graphics g) {
-        g.setColor(new Color(255, 0, 0));
-        g.fillOval((int) x,(int) y, width, height);
     }
 
     public void cancelMovement() {
