@@ -62,42 +62,32 @@ public class Player extends Entity{
     }
 
     private void move(Direction direction) {
-        int delta;
+        double relativeHeading;
+        int dir;
         switch (direction) {
             case FORWARD -> {
-                x += Math.sin(Math.toRadians(heading)) * playerSpeed;
-                y -= Math.cos(Math.toRadians(heading)) * playerSpeed;
+                dir = 1;
+                relativeHeading = heading;
             }
             case BACKWARD -> {
-                x -= Math.sin(Math.toRadians(heading)) * playerSpeed;
-                y += Math.cos(Math.toRadians(heading)) * playerSpeed;
+                dir = -1;
+                relativeHeading = heading;
             }
             case LEFT -> {
-                x -= Math.sin(Math.toRadians(heading+90)) * playerSpeed;
-                y += Math.cos(Math.toRadians(heading+90)) * playerSpeed;
+                dir = -1;
+                relativeHeading = heading + 90;
             }
             case RIGHT -> {
-                x += Math.sin(Math.toRadians(heading+90)) * playerSpeed;
-                y -= Math.cos(Math.toRadians(heading+90)) * playerSpeed;
+                dir = 1;
+                relativeHeading = heading + 90;
+            } case default -> {
+                dir = 0;
+                relativeHeading = 0;
             }
-            case default -> {
-                return;
-            }
+
         }
-//        System.out.println(heading % 90);
-//        gradient = -gradient;
-//        hyp = player speed
-//        y -= playerSpeed * gradient;
-//        x -=  playerSpeed / gradient;
-//        switch (direction) {
-//            case FORWARD -> gradient = getGradientFromHeading(heading);
-//            case BACKWARD -> gradient = getGradientFromHeading(heading+180);
-//            case LEFT -> gradient = getGradientFromHeading(heading+270);
-//            case RIGHT -> gradient = getGradientFromHeading(heading+90);
-//            case default -> {
-//                return;
-//            }
-//        }
+        x += Math.sin(Math.toRadians(relativeHeading)) * playerSpeed * dir;
+        y -= Math.cos(Math.toRadians(relativeHeading)) * playerSpeed * dir;
     }
 
     enum Direction {
