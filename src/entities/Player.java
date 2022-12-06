@@ -13,7 +13,7 @@ import static utils.helpers.*;
 public class Player extends Entity{
     private RayCaster rayCaster;
     private boolean up, down, left, right;
-    private final float playerSpeed = 0.75f;
+    private final float playerSpeed = 0.33f;
     public Mouse mouse = new Mouse();
     private int fov;
     private double heading;
@@ -62,20 +62,42 @@ public class Player extends Entity{
     }
 
     private void move(Direction direction) {
-        double gradient;
+        int delta;
         switch (direction) {
-            case FORWARD -> gradient = getGradientFromHeading(heading);
-            case BACKWARD -> gradient = getGradientFromHeading(heading+180);
-            case LEFT -> gradient = getGradientFromHeading(heading+270);
-            case RIGHT -> gradient = getGradientFromHeading(heading+90);
+            case FORWARD -> {
+                x += Math.sin(Math.toRadians(heading)) * playerSpeed;
+                y -= Math.cos(Math.toRadians(heading)) * playerSpeed;
+            }
+            case BACKWARD -> {
+                x -= Math.sin(Math.toRadians(heading)) * playerSpeed;
+                y += Math.cos(Math.toRadians(heading)) * playerSpeed;
+            }
+            case LEFT -> {
+                x -= Math.sin(Math.toRadians(heading+90)) * playerSpeed;
+                y += Math.cos(Math.toRadians(heading+90)) * playerSpeed;
+            }
+            case RIGHT -> {
+                x += Math.sin(Math.toRadians(heading+90)) * playerSpeed;
+                y -= Math.cos(Math.toRadians(heading+90)) * playerSpeed;
+            }
             case default -> {
                 return;
             }
         }
-        gradient = -gradient;
+//        System.out.println(heading % 90);
+//        gradient = -gradient;
 //        hyp = player speed
-        y -= playerSpeed * gradient;
-        x -=  playerSpeed / gradient;
+//        y -= playerSpeed * gradient;
+//        x -=  playerSpeed / gradient;
+//        switch (direction) {
+//            case FORWARD -> gradient = getGradientFromHeading(heading);
+//            case BACKWARD -> gradient = getGradientFromHeading(heading+180);
+//            case LEFT -> gradient = getGradientFromHeading(heading+270);
+//            case RIGHT -> gradient = getGradientFromHeading(heading+90);
+//            case default -> {
+//                return;
+//            }
+//        }
     }
 
     enum Direction {
