@@ -8,8 +8,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 
 import static main.Game.*;
-import static utils.helpers.drawDebug;
-import static utils.helpers.getLineAngle;
+import static utils.helpers.*;
 
 public class Player extends Entity{
     private RayCaster rayCaster;
@@ -50,16 +49,40 @@ public class Player extends Entity{
 
     private void updatePos() {
         if (left && !right) {
-            x -= playerSpeed;
+            move(Direction.LEFT);
         } else if (right && !left) {
-            x += playerSpeed;
+            move(Direction.RIGHT);
         }
 
         if (up && !down) {
-            y -= playerSpeed;
+            move(Direction.FORWARD);
         } else if (down && !up) {
-            y += playerSpeed;
+            move(Direction.BACKWARD);
         }
+    }
+
+    private void move(Direction direction) {
+        double gradient;
+        switch (direction) {
+            case FORWARD -> gradient = getGradientFromHeading(heading);
+            case BACKWARD -> gradient = getGradientFromHeading(heading+180);
+            case LEFT -> gradient = getGradientFromHeading(heading+270);
+            case RIGHT -> gradient = getGradientFromHeading(heading+90);
+            case default -> {
+                return;
+            }
+        }
+        gradient = -gradient;
+//        hyp = player speed
+        y -= playerSpeed * gradient;
+        x -=  playerSpeed / gradient;
+    }
+
+    enum Direction {
+        FORWARD,
+        BACKWARD,
+        LEFT,
+        RIGHT
     }
 
     public void render(Graphics g) {

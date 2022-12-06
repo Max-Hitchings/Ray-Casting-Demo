@@ -23,9 +23,9 @@ public class Mouse {
         PointerInfo info = MouseInfo.getPointerInfo();
         newX = info.getLocation().x;
         deltaX = (newX - oldX) * sensetivity;
-        game.getPlayer().updateHeading(deltaX);
         oldX = GAME_WIDTH/2;
         if (state == State.LOCKED) {
+            game.getPlayer().updateHeading(deltaX);
             robot.mouseMove(GAME_WIDTH/2, GAME_HEIGHT/2);
         }
 

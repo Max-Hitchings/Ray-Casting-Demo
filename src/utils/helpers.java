@@ -7,6 +7,16 @@ public class helpers {
     public static double getGradient(double startX, double startY, double endX, double endY) {
         return (startY-endY) / (endX-startX);
     }
+    public static double getGradientFromHeading(double heading) {
+//        if (0==0) return 0;
+        if (heading < 0) {
+            heading = 360 + heading;
+        } else if (heading > 360) {
+            heading -= 360;
+        }
+        if (heading == 180 || heading == 0 ) return Double.MAX_VALUE;
+        return Math.tan(Math.toRadians(heading + 90));
+    }
     public static double getLineAngle(double startX, double startY, double endX, double endY) {
         return (Math.toDegrees(Math.atan2(startY - endY, startX - endX)) + 270)%360;
     }
