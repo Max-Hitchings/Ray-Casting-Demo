@@ -18,7 +18,7 @@ public class Ray {
     //        lx - Left X
     double tyDelta, byDelta, rxDelta, lxDelta;
     public double gradient, heading;
-    public float headingDelta;
+    public double headingDelta;
     public double xNormalStep, yNormalStep;
     public Line xLine, yLine, finalCast;
     public int yX = 0;
@@ -26,7 +26,7 @@ public class Ray {
     public Ray(GameGrid gameGrid) {
         this(gameGrid, 0);
     }
-    public Ray(GameGrid gameGrid, float headingDelta) {
+    public Ray(GameGrid gameGrid, double headingDelta) {
         this.gameGrid = gameGrid;
         this.headingDelta = headingDelta;
 //        this.headingDelta = 20;

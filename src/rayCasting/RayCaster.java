@@ -15,15 +15,16 @@ public class RayCaster {
     Point2D.Double origin;
     double heading;
     int fov;
-    public RayCaster(Game game, int fov, float frequency) {
+    public RayCaster(Game game, int fov) {
         this.game = game;
         this.fov = fov;
-        rays = new Ray[(int)(fov)];
-
-        float halfFov = rays.length / 2;
+        rays = new Ray[GAME_WIDTH];
+        double angleDiff = (double)fov / (double)GAME_WIDTH;
+        float halfFov = fov / 2;
 
         for (int i = 0; i < rays.length; i++) {
-            rays[i] = new Ray(game.getGrid(), (int)((i-halfFov)));
+            System.out.println((i * angleDiff) - halfFov);
+            rays[i] = new Ray(game.getGrid(), ((i*angleDiff)-halfFov));
         }
 
 //        rays = new Ray[(int)(fov*frequency)];

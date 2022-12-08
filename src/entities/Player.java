@@ -27,7 +27,7 @@ public class Player extends Entity{
     }
 
     private void initClasses() {
-        rayCaster = new RayCaster(game, fov, 10);
+        rayCaster = new RayCaster(game, fov);
         mouse.pos = new Point2D.Double(0,0);
         crosshair = new Crosshair(15, 15, 2);
     }
