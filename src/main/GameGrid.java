@@ -53,4 +53,8 @@ public class GameGrid {
             }
         }
     }
+
+    public boolean[][] getLayout() {
+        return grid;
+    }
 }

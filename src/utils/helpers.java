@@ -3,6 +3,8 @@ package utils;
 import java.awt.*;
 import java.awt.geom.Line2D;
 
+import static utils.Constants.MINIMAP_SCALE;
+
 public class helpers {
     public static double getGradient(double startX, double startY, double endX, double endY) {
         return (startY-endY) / (endX-startX);
@@ -31,7 +33,7 @@ public class helpers {
     }
     public static void drawCast(Graphics g, Line2D.Double line, Color c) {
         g.setColor(c);
-        g.drawLine((int) line.x1, (int) line.y1, (int) line.x2, (int) line.y2);
+        g.drawLine((int) (line.x1*MINIMAP_SCALE), (int) (line.y1*MINIMAP_SCALE), (int) (line.x2*MINIMAP_SCALE), (int) (line.y2*MINIMAP_SCALE));
     }
     public static void drawCircle(Graphics g, int x, int y, Color c) {
         g.setColor(c);

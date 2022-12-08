@@ -2,6 +2,7 @@ package main;
 
 import entities.Player;
 import inputs.Mouse;
+import utils.MiniMap;
 
 import java.awt.*;
 
@@ -12,6 +13,7 @@ public class Game implements Runnable{
     private Player player;
     private GameGrid gameGrid;
     public Mouse mouse;
+    MiniMap miniMap;
 
     private final int FPS_SET = 144;
     private final int TPS_SET = 200;
@@ -38,7 +40,7 @@ public class Game implements Runnable{
         gameGrid = new GameGrid();
         player = new Player(this, 95);
         mouse = new Mouse(this);
-
+        miniMap = new MiniMap(this, 0, 0);
     }
 
     public GameGrid getGrid() {
@@ -55,8 +57,9 @@ public class Game implements Runnable{
         player.update();
     }
     public void render(Graphics g) {
-        gameGrid.render(g);
+//        gameGrid.render(g);
         player.render(g);
+        miniMap.draw(g);
     }
     @Override
     public void run() {

@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="starting to get movement working properly">
-      <change afterPath="$PROJECT_DIR$/src/utils/Crosshair.java" afterDir="false" />
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Changed number of rays in rayCaster from fov to screen width to make edges look smoother">
+      <change afterPath="$PROJECT_DIR$/src/utils/MiniMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rayCasting/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/Ray.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +152,28 @@
       <option name="project" value="LOCAL" />
       <updated>1670118060240</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added Crosshair that i think works properly">
+      <created>1670351799761</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670351799761</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added Crosshair that i think works properly">
+      <created>1670351821152</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670351821152</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Changed number of rays in rayCaster from fov to screen width to make edges look smoother">
+      <created>1670497130722</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670497130722</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +199,9 @@
     <MESSAGE value="Fixed some bugs in DDA" />
     <MESSAGE value="Fixed DDA bug for right angles" />
     <MESSAGE value="Started to render rays onto screen (3d) + added proper camer0a panning with mouse (need to do movment next" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started to render rays onto screen (3d) + added proper camer0a panning with mouse (need to do movment next" />
+    <MESSAGE value="Added Crosshair that i think works properly" />
+    <MESSAGE value="Changed number of rays in rayCaster from fov to screen width to make edges look smoother" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed number of rays in rayCaster from fov to screen width to make edges look smoother" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

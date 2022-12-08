@@ -57,7 +57,7 @@ public class Ray {
         completeRay();
     }
     public void draw(Graphics g) {
-        drawCast(g, finalCast, Color.ORANGE);
+        drawCast(g, finalCast, new Color(137,207,240));
 //        drawDebug(g, String.valueOf(finalCast.len), 20);
     }
     private void completeRay() {

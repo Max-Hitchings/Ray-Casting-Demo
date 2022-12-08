@@ -41,7 +41,7 @@ public class Player extends Entity{
     public void render(Graphics g) {
         rayCaster.render(g);
         crosshair.draw(g);
-        drawPlayer(g);
+//        drawPlayer(g);
     }
 
     public void drawPlayer(Graphics g) {
@@ -109,6 +109,10 @@ public class Player extends Entity{
         BACKWARD,
         LEFT,
         RIGHT
+    }
+
+    public Point2D.Float getPos() {
+        return new Point2D.Float(x, y);
     }
 
     public void cancelMovement() {
