@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Changed number of rays in rayCaster from fov to screen width to make edges look smoother">
-      <change afterPath="$PROJECT_DIR$/src/utils/MiniMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inputs/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/Mouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GameGrid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GameGrid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rayCasting/Ray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/Ray.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/MiniMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MiniMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

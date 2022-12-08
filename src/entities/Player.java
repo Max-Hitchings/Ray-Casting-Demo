@@ -8,21 +8,22 @@ import utils.Crosshair;
 import java.awt.*;
 import java.awt.geom.Point2D;
 
-import static main.Game.*;
-import static utils.helpers.*;
+import static main.Game.TILE_SIZE;
+import static utils.Constants.PLAYER;
+import static utils.helpers.getLineAngle;
 
 public class Player extends Entity{
     private RayCaster rayCaster;
     private Crosshair crosshair;
     private boolean up, down, left, right;
-    private final float playerSpeed = 0.33f;
+    private final float playerSpeed = PLAYER.SPEED;
     public Mouse mouse = new Mouse();
     private int fov;
     private double heading;
 
-    public Player(Game game, int fov) {
+    public Player(Game game) {
         super(game, (TILE_SIZE/2)*2, (TILE_SIZE/2)*2, 10, 10);
-        this.fov = 90;
+        this.fov = PLAYER.FOV;
         initClasses();
     }
 

@@ -6,6 +6,8 @@ import utils.MiniMap;
 
 import java.awt.*;
 
+import static utils.Constants.GAME;
+
 public class Game implements Runnable{
     private GameWindow gameWindow;
     private GamePanel gamePanel;
@@ -15,11 +17,11 @@ public class Game implements Runnable{
     public Mouse mouse;
     MiniMap miniMap;
 
-    private final int FPS_SET = 144;
-    private final int TPS_SET = 200;
+    private final int FPS_SET = GAME.FPS;
+    private final int TPS_SET = GAME.TPS;
 
-    public final static int TILE_NORMAL_SIZE = 32;
-    public final static float SCALE = 2f;
+    public final static int TILE_NORMAL_SIZE = GAME.TILE_SIZE;
+    public final static float SCALE = GAME.SCALE;
     public final static int TILES_IN_WIDTH = 16;
     public final static int TILES_IN_HEIGHT = 9;
     public final static int TILE_SIZE = (int) (TILE_NORMAL_SIZE * SCALE);
@@ -38,7 +40,7 @@ public class Game implements Runnable{
 
     private void initClasses() throws AWTException {
         gameGrid = new GameGrid();
-        player = new Player(this, 95);
+        player = new Player(this);
         mouse = new Mouse(this);
         miniMap = new MiniMap(this, 0, 0);
     }

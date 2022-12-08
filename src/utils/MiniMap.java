@@ -6,13 +6,13 @@ import main.Game;
 import java.awt.*;
 
 import static main.Game.*;
-import static utils.Constants.MINIMAP_SCALE;
+import static utils.Constants.MINIMAP;
 
 public class MiniMap {
     boolean[][] mapLayout;
     Player player;
     int height, width, x, y;
-    float scale = MINIMAP_SCALE, miniTileSize;
+    float scale = MINIMAP.SCALE, miniTileSize;
 
     public MiniMap(Game game, int x, int y) {
         mapLayout = game.getGrid().getLayout();

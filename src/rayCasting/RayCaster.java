@@ -23,7 +23,6 @@ public class RayCaster {
         float halfFov = fov / 2;
 
         for (int i = 0; i < rays.length; i++) {
-            System.out.println((i * angleDiff) - halfFov);
             rays[i] = new Ray(game.getGrid(), ((i*angleDiff)-halfFov));
         }
 
