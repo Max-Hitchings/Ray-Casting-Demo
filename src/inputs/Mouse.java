@@ -11,7 +11,7 @@ import static utils.Constants.MOUSE;
 public class Mouse {
     public Robot robot;
     public State state;
-    private double oldX, newX, deltaX;
+    private double oldX;
     Game game;
     float sensitivity = MOUSE.SENSITIVITY;
 
@@ -21,10 +21,11 @@ public class Mouse {
     }
 
     public void update() {
+        double newX, deltaX;
         PointerInfo info = MouseInfo.getPointerInfo();
         newX = info.getLocation().x;
         deltaX = (newX - oldX) * sensitivity;
-        oldX = GAME_WIDTH/2;
+        oldX = (float)GAME_WIDTH/2;
         if (state == State.LOCKED) {
             game.getPlayer().updateHeading(deltaX);
             robot.mouseMove(GAME_WIDTH/2, GAME_HEIGHT/2);
@@ -38,6 +39,9 @@ public class Mouse {
 
     public void unLock() {
         state = State.UNLOCKED;
+    }
+    public void toggle() {
+        state =  state == State.LOCKED ? State.UNLOCKED : State.LOCKED;
     }
     enum State {
         LOCKED,

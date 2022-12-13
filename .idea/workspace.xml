@@ -4,15 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Changed number of rays in rayCaster from fov to screen width to make edges look smoother">
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Added miniMap and removed large map displayed behind 3d display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/entities/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/entities/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/inputs/Mouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inputs/Mouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rayCasting/RayCaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/MiniMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/MiniMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/helpers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/helpers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/Crosshair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Crosshair.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +91,7 @@
       <workItem from="1669885586534" duration="19294000" />
       <workItem from="1670104744649" duration="9322000" />
       <workItem from="1670319806992" duration="889000" />
+      <workItem from="1670577924480" duration="5844000" />
     </task>
     <task id="LOCAL-00001" summary="Started sending casts first move">
       <created>1668122687056</created>
