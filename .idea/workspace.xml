@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Added miniMap and removed large map displayed behind 3d display">
+    <list default="true" id="64856f18-370e-4a03-933a-b15cf0874c38" name="Changes" comment="Added support for loading levels from images">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/Crosshair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Crosshair.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +24,9 @@
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar:///Library/Java/JavaVirtualMachines/jdk-19.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/Cursor.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -52,7 +52,8 @@
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -92,6 +93,15 @@
       <workItem from="1670104744649" duration="9322000" />
       <workItem from="1670319806992" duration="889000" />
       <workItem from="1670577924480" duration="5844000" />
+      <workItem from="1671963708851" duration="921000" />
+      <workItem from="1673521778236" duration="1197000" />
+      <workItem from="1679904677591" duration="228000" />
+      <workItem from="1680170385388" duration="604000" />
+      <workItem from="1681806028925" duration="2145000" />
+      <workItem from="1681978441942" duration="7434000" />
+      <workItem from="1686308225939" duration="928000" />
+      <workItem from="1689281413093" duration="236000" />
+      <workItem from="1689324772442" duration="598000" />
     </task>
     <task id="LOCAL-00001" summary="Started sending casts first move">
       <created>1668122687056</created>
